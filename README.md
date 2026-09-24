@@ -1,2 +1,2 @@
-# Mi-biblioteca-m-gica-
-Biblioteca con películas, series y libros
+# Vida-ca-tica-
+Ayuda para neurodivergentes
