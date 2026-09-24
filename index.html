@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c9b8e8">
+  <title>Mi espacio neurodivergente</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <h1>🌿 Mi espacio</h1>
+    <p>Herramientas para hacer el día un poquito más fácil</p>
+  </div>
+
+  <button id="themeButton" class="icon-button" aria-label="Cambiar tema">🌙</button>
+</header>
+
+<nav class="bottom-nav">
+  <button class="nav-button active" data-section="inicio">
+    <span>🏠</span>
+    <small>Inicio</small>
+  </button>
+
+  <button class="nav-button" data-section="herramientas">
+    <span>🛠️</span>
+    <small>Herramientas</small>
+  </button>
+
+  <button class="nav-button" data-section="favoritos">
+    <span>⭐</span>
+    <small>Favoritos</small>
+  </button>
+
+  <button class="nav-button" data-section="tareas">
+    <span>✅</span>
+    <small>Tareas</small>
+  </button>
+
+  <button class="nav-button" data-section="ajustes">
+    <span>⚙️</span>
+    <small>Ajustes</small>
+  </button>
+</nav>
+
+
+<main>
+
+<!-- INICIO -->
+<section id="inicio" class="section active">
+
+  <div class="welcome-card">
+    <span class="big-icon">🌱</span>
+    <div>
+      <h2>Hola 💚</h2>
+      <p>Este espacio está hecho para adaptarse a ti, no al revés.</p>
+    </div>
+  </div>
+
+  <div class="quick-grid">
+
+    <button class="quick-card" data-go="herramientas">
+      <span>🧰</span>
+      <strong>Herramientas</strong>
+      <small>Busca algo que pueda ayudarte</small>
+    </button>
+
+    <button class="quick-card" data-go="tareas">
+      <span>📝</span>
+      <strong>Quehaceres</strong>
+      <small>Organiza lo importante</small>
+    </button>
+
+    <button class="quick-card" data-go="favoritos">
+      <span>⭐</span>
+      <strong>Favoritos</strong>
+      <small>Lo que sabes que te funciona</small>
+    </button>
+
+    <button class="quick-card" data-go="emociones">
+      <span>💭</span>
+      <strong>¿Cómo estoy?</strong>
+      <small>Identifica cómo te encuentras</small>
+    </button>
+
+  </div>
+
+  <div class="card">
+    <h3>🌤️ ¿Qué necesitas ahora?</h3>
+
+    <div class="need-buttons">
+      <button data-category="regulacion">😣 Estoy sobrecargado/a</button>
+      <button data-category="estudio">📚 Necesito estudiar</button>
+      <button data-category="organizacion">📋 No sé por dónde empezar</button>
+      <button data-category="comunicacion">💬 Necesito comunicar algo</button>
+      <button data-category="descanso">😴 Necesito descansar</button>
+      <button data-category="vida diaria">🏠 Me cuesta una tarea diaria</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💡 Una cosa importante</h3>
+    <p>
+      No tienes que utilizar todas las herramientas. Una herramienta
+      puede funcionar un día y no funcionar otro. Puedes elegir lo que
+      necesites en cada momento.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- HERRAMIENTAS -->
+<section id="herramientas" class="section">
+
+  <div class="section-header">
+    <div>
+      <h2>🛠️ Herramientas</h2>
+      <p>Recursos organizados según lo que necesites.</p>
+    </div>
+
+    <button id="addToolButton" class="primary-button">
+      ＋ Añadir
+    </button>
+  </div>
+
+  <div class="search-box">
+    <span>🔎</span>
+    <input
+      type="search"
+      id="searchTools"
+      placeholder="Buscar herramienta..."
+    >
+  </div>
+
+  <div id="categoryButtons" class="category-scroll"></div>
+
+  <div id="toolsContainer" class="tools-grid"></div>
+
+</section>
+
+
+<!-- FAVORITOS -->
+<section id="favoritos" class="section">
+
+  <div class="section-header">
+    <div>
+      <h2>⭐ Mis favoritos</h2>
+      <p>Las herramientas que has guardado.</p>
+    </div>
+  </div>
+
+  <div id="favoritesContainer" class="tools-grid"></div>
+
+</section>
+
+
+<!-- TAREAS -->
+<section id="tareas" class="section">
+
+  <div class="section-header">
+    <div>
+      <h2>✅ Quehaceres importantes</h2>
+      <p>Divide las cosas grandes en pasos pequeños.</p>
+    </div>
+
+    <button id="addTaskButton" class="primary-button">
+      ＋ Añadir
+    </button>
+  </div>
+
+  <div class="progress-card">
+    <div class="progress-info">
+      <span>Progreso</span>
+      <strong id="taskProgressText">0%</strong>
+    </div>
+
+    <div class="progress-bar">
+      <div id="taskProgressBar"></div>
+    </div>
+  </div>
+
+  <div id="tasksContainer"></div>
+
+</section>
+
+
+<!-- EMOCIONES -->
+<section id="emociones" class="section">
+
+  <div class="section-header">
+    <div>
+      <h2>💭 ¿Cómo estoy?</h2>
+      <p>No tienes que saber exactamente qué sientes.</p>
+    </div>
+  </div>
+
+  <div class="emotion-card">
+
+    <h3>Selecciona lo que más se parezca a cómo estás ahora</h3>
+
+    <div class="emotion-grid">
+
+      <button class="emotion-button" data-emotion="😊 Bien">
+        😊<span>Bien</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="😐 Normal">
+        😐<span>Normal</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="😣 Agobiado/a">
+        😣<span>Agobiado/a</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="😴 Cansado/a">
+        😴<span>Cansado/a</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="😢 Triste">
+        😢<span>Triste</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="😡 Enfadado/a">
+        😡<span>Enfadado/a</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="😰 Nervioso/a">
+        😰<span>Nervioso/a</span>
+      </button>
+
+      <button class="emotion-button" data-emotion="🫥 Saturado/a">
+        🫥<span>Saturado/a</span>
+      </button>
+
+    </div>
+
+    <div id="emotionMessage" class="message-box hidden"></div>
+
+  </div>
+
+  <div class="card">
+    <h3>📝 Puedes escribirlo</h3>
+
+    <textarea
+      id="emotionNotes"
+      placeholder="¿Qué está pasando? No hace falta escribirlo perfectamente..."
+    ></textarea>
+
+    <button id="saveEmotionNotes" class="primary-button full">
+      Guardar
+    </button>
+  </div>
+
+</section>
+
+
+<!-- AJUSTES -->
+<section id="ajustes" class="section">
+
+  <div class="section-header">
+    <div>
+      <h2>⚙️ Ajustes</h2>
+      <p>Personaliza tu espacio.</p>
+    </div>
+  </div>
+
+  <div class="card">
+
+    <h3>🎨 Tema</h3>
+
+    <div class="theme-grid">
+
+      <button class="theme-option" data-theme="lavanda">
+        💜 Lavanda
+      </button>
+
+      <button class="theme-option" data-theme="verde">
+        🌿 Verde
+      </button>
+
+      <button class="theme-option" data-theme="azul">
+        💙 Azul
+      </button>
+
+      <button class="theme-option" data-theme="rosa">
+        🌸 Rosa
+      </button>
+
+      <button class="theme-option" data-theme="crema">
+        🤍 Crema
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h3>🧠 Mis necesidades</h3>
+
+    <p>
+      Selecciona las áreas que quieres tener más presentes en la aplicación.
+    </p>
+
+    <div id="needsContainer" class="needs-list"></div>
+
+    <button id="saveNeeds" class="primary-button full">
+      Guardar necesidades
+    </button>
+
+  </div>
+
+  <div class="card danger-card">
+
+    <h3>🗑️ Datos</h3>
+
+    <p>
+      Los datos de esta aplicación se guardan localmente en este navegador.
+    </p>
+
+    <button id="deleteData" class="danger-button">
+      Borrar todos mis datos
+    </button>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- MODAL PARA HERRAMIENTA -->
+<div id="toolModal" class="modal hidden">
+
+  <div class="modal-content">
+
+    <button class="close-modal" id="closeToolModal">×</button>
+
+    <h2>🛠️ Nueva herramienta</h2>
+
+    <label>
+      Nombre
+      <input id="toolName" type="text" placeholder="Ej. Temporizador visual">
+    </label>
+
+    <label>
+      Categoría
+      <select id="toolCategory">
+        <option value="estudio">📚 Estudio</option>
+        <option value="organizacion">📋 Organización</option>
+        <option value="procrastinacion">⏳ Procrastinación</option>
+        <option value="regulacion">🧘 Regulación</option>
+        <option value="comunicacion">💬 Comunicación</option>
+        <option value="relaciones">👥 Relaciones</option>
+        <option value="descanso">😴 Descanso</option>
+        <option value="vida diaria">🏠 Vida diaria</option>
+        <option value="concentracion">🎯 Concentración</option>
+        <option value="autocuidado">🌱 Autocuidado</option>
+      </select>
+    </label>
+
+    <label>
+      Descripción
+      <textarea
+        id="toolDescription"
+        placeholder="Explica para qué sirve..."
+      ></textarea>
+    </label>
+
+    <button id="saveTool" class="primary-button full">
+      Guardar herramienta
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- MODAL PARA TAREA -->
+<div id="taskModal" class="modal hidden">
+
+  <div class="modal-content">
+
+    <button class="close-modal" id="closeTaskModal">×</button>
+
+    <h2>✅ Nuevo quehacer</h2>
+
+    <label>
+      Nombre
+      <input id="taskName" type="text" placeholder="Ej. Ducharse">
+    </label>
+
+    <label>
+      Categoría
+      <select id="taskCategory">
+        <option value="importante">⭐ Importante</option>
+        <option value="autocuidado">🌱 Autocuidado</option>
+        <option value="estudio">📚 Estudio</option>
+        <option value="casa">🏠 Casa</option>
+        <option value="personal">💚 Personal</option>
+      </select>
+    </label>
+
+    <label>
+      Pasos pequeños
+      <textarea
+        id="taskSteps"
+        placeholder="Un paso por línea..."
+      ></textarea>
+    </label>
+
+    <button id="saveTask" class="primary-button full">
+      Guardar quehacer
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
